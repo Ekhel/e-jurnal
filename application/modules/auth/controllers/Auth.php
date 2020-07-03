@@ -20,12 +20,13 @@ class Auth extends MX_Controller{
 		$sandi = md5($this->input->post('sandi'));
 		if (isset($username, $sandi)) {
 			//cek user dan sandi di database
-			if($this->M_login->cek($username, $sandi) == TRUE){
-				$admin = $this->M_login->getAdmin($nama, $sandi);
+			if($this->M_auth->cek($username, $sandi) == TRUE){
+				$admin = $this->M_auth->getAdmin($username, $sandi);
 				$data['username'] = $username;
 				$data['sandi'] = $sandi;
 				$data['id_admin'] = $admin->id_admin;
 				$data['level'] = $admin->level;
+        $data['id_user'] = $admin->id_user;
 				$data['nama_lengkap'] = $admin->nama_lengkap;
         $data['id_sekolah'] = $admin->id_sekolah;
 				$data['login'] = TRUE;
@@ -35,16 +36,16 @@ class Auth extends MX_Controller{
 			  }
   			elseif ($this->session->userdata('level')=='2'){
           //helper_log("login", "Login ke applikasi");
-  		  redirect('dashboard');
+  		  redirect('jurnal');
   			}
 			}
 			else {
 				$this->session->set_flashdata('message', 'Nama dan sandi anda salah');
-				redirect('login');
+				redirect('auth');
 			}
 		}
 		else {
-			redirect('login');
+			redirect('auth');
 		}
 	}
 
@@ -59,7 +60,7 @@ class Auth extends MX_Controller{
 			if ($user_level) {
 				if (is_array($user_level)) { //cek apakah $user_level merupakan jenis array
 					if (!in_array($this->session->userdata('level'), $user_level)) {//cek apakah user_level yg login masuk dalam array $user_level
-						redirect('home');
+						redirect('jurnal');
 					}
 				}
 				else {

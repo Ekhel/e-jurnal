@@ -7,28 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
   <!-- Site Properties -->
-  <title>Login Example - Semantic</title>
-  <link rel="stylesheet" type="text/css" href="../dist/components/reset.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/site.css">
-
-  <link rel="stylesheet" type="text/css" href="../dist/components/container.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/grid.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/header.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/image.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/menu.css">
-
-  <link rel="stylesheet" type="text/css" href="../dist/components/divider.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/segment.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/form.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/input.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/button.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/list.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/message.css">
-  <link rel="stylesheet" type="text/css" href="../dist/components/icon.css">
-
-  <script src="assets/library/jquery.min.js"></script>
-  <script src="../dist/components/form.js"></script>
-  <script src="../dist/components/transition.js"></script>
+  <title>e - Jurnal | Dispendik Kab. Jayapura</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.4.1/semantic.min.css" />
 
   <style type="text/css">
     body {
@@ -88,26 +68,26 @@
 <div class="ui middle aligned center aligned grid">
   <div class="column">
     <h2 class="ui teal image header">
-      <img src="assets/images/logo.png" class="image">
+      <img src="<?php echo base_url()?>assets/frontend/logo/KabJayapura.png" class="image">
       <div class="content">
-        Log-in to your account
+        e - Jurnal | Dinas Pendidikan
       </div>
     </h2>
-    <form class="ui large form">
+    <form class="ui large form" method="post" action="<?php echo base_url()?>Auth/login_proses">
       <div class="ui stacked segment">
         <div class="field">
           <div class="ui left icon input">
             <i class="user icon"></i>
-            <input type="text" name="email" placeholder="E-mail address">
+            <input type="text" name="username" placeholder="Username">
           </div>
         </div>
         <div class="field">
           <div class="ui left icon input">
             <i class="lock icon"></i>
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="sandi" placeholder="Password">
           </div>
         </div>
-        <div class="ui fluid large teal submit button">Login</div>
+        <button type="submit" class="ui fluid large teal button">Login</button>
       </div>
 
       <div class="ui error message"></div>
